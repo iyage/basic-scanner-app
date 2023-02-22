@@ -9,10 +9,10 @@ function App() {
   return (
     <>
     <Routes>
-      <Route path={'/'} element={<Login/>}/>
-      <Route path='/pages' element={<Pages/>}>
+      {/* <Route path={'/'} element={<Login/>}/> */}
+      <Route path='/' element={<Pages/>}>
         <Route index element={<Container/>}/>
-         <Route path='/pages/commission' element={<Commission/>} />
+         <Route path='/commission' element={<Commission/>} />
           <Route path="*" element={<NotFound/>}/>
       </Route>
      </Routes>

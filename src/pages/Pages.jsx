@@ -60,7 +60,7 @@ const Img = styled.img`
         justify-content: center;
     `
 const auth = localStorage.getItem('auth')
-  return auth? (
+  return  (
     <PagesContainer>
         <Header>
 <ImgContainer>
@@ -72,7 +72,8 @@ const auth = localStorage.getItem('auth')
    <Circle3/>
       <Circle2/>
     </PagesContainer>
-  ):<Navigate to={"/"}/>
+  )
 }
-
+// auth?
+// :<Navigate to={"/"}/>
 export default Pages
