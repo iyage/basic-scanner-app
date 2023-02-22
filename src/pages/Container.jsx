@@ -27,7 +27,7 @@ function Container() {
 
 <ButtonContainer>
       <ForMControl>
-<Button type='button' component={Link} to="/pages/commission"   variant='contained'
+<Button type='button' component={Link} to="/commission"   variant='contained'
 size='large'
 fullWidth
   style={{
