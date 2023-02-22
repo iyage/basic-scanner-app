@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
+import {  Outlet } from 'react-router-dom'
 import logo from '../images/SproxilR_Transparent.png'
 import styled from 'styled-components'
 
@@ -59,7 +59,7 @@ const Img = styled.img`
         width: 100%;
         justify-content: center;
     `
-const auth = localStorage.getItem('auth')
+// const auth = localStorage.getItem('auth')
   return  (
     <PagesContainer>
         <Header>
