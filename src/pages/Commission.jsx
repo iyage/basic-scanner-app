@@ -37,10 +37,10 @@ const [scannerState,setScannerState] = useState(false)
     setScannerState(true);
     codeReader.decodeOnceFromVideoDevice(selectedDeviceId, 'video').then((result) => {
                             console.log(result)
-                            console.log(selectedDeviceId)
+                             alert(result)
                         }).catch((err) => {
                             console.error(err)
-                              console.error(err)
+                            alert(err)
                         })
                    }}
       
