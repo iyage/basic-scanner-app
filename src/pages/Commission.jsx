@@ -2,7 +2,6 @@ import { IconButton } from '@material-ui/core'
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components';
 import { FaCamera } from 'react-icons/fa';
-import { codeReader } from '../apis/qr';
  
 const ScannerContainer = styled.div`
   display: flex;
