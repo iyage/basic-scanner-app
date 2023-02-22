@@ -20,8 +20,11 @@ function Commission() {
 
   codeReader.getVideoInputDevices().then((videoInputDevices)=>{
     console.log(videoInputDevices)
-    
-if (videoInputDevices.length > 1)  selectedDeviceId = videoInputDevices[1].deviceId;
+    alert(videoInputDevices)
+if (videoInputDevices.length > 1){ 
+  selectedDeviceId = videoInputDevices[1].deviceId
+  alert(selectedDeviceId)
+}
 else selectedDeviceId = videoInputDevices[0].deviceId;
   })
 
