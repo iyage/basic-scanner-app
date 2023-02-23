@@ -97,6 +97,7 @@ const  [countResults,setCountResults]= useState(0);
 // const [scannerState,setScannerState] = useState(false)
   return (
     <Container>
+      <div id='reader' width='90%'></div>
       <ScannerContainer style={{height:'60vh'}}>
       <IconButton
         onClick={()=>{
