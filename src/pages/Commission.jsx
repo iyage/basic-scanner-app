@@ -1,5 +1,5 @@
 import { IconButton } from '@material-ui/core'
-import React from 'react'
+import React, { useRef } from 'react'
 import {Html5Qrcode} from "html5-qrcode"
 import styled from 'styled-components';
 import { FaCamera } from 'react-icons/fa';
@@ -23,18 +23,20 @@ function onScanFailure(error) {
   // for example:
   console.warn(`Code scan error = ${error}`);
 }
-let html5Qrcoder= new Html5Qrcode(
-  "reader",
-  { fps: 10, qrbox: {width: 250, height: 250} },
-  /* verbose= */ false);
+const reader = useRef()
+
 // html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
   return (
     <Container>
-      <div id='reader' width='90%'></div>
+      <div id='reader' ref={reader} width='90%'></div>
       <ScannerContainer style={{height:'60vh'}}>
       <IconButton
         onClick={()=>{
+          let html5Qrcoder= new Html5Qrcode(
+  "reader",
+  { fps: 10, qrbox: {width: 250, height: 250} },
+  /* verbose= */ false);
         html5Qrcoder.start({ facingMode: "environment" },onScanSuccess,onScanFailure);
   }}
       
