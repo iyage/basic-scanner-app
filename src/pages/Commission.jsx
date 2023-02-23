@@ -38,6 +38,7 @@ const [scannerState,setScannerState] = useState(false)
         onClick={()=>{
     setScannerState(true);
        codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+        alert(result)
               if (result) {
                 console.log(result)
                  alert(result)
@@ -47,7 +48,8 @@ const [scannerState,setScannerState] = useState(false)
                 console.error(err)
                alert(err)
               }
-              if(err) console.log(err)
+              if(err) console.log(err);
+              alert("called")
             })
                    }}
       
