@@ -38,13 +38,17 @@ const [scannerState,setScannerState] = useState(false)
       <IconButton
         onClick={()=>{
     setScannerState(true);
-    codeReader.decodeOnceFromVideoDevice(selectedDeviceId, 'video').then((result) => {
-                            console.log(result)
-                             alert(result)
-                        }).catch((err) => {
-                            console.error(err)
-                            alert(err)
-                        })
+       codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+              if (result) {
+                console.log(result)
+                 alert(result)
+              }
+              // eslint-disable-next-line no-undef
+              if (err && !(err instanceof ZXing.NotFoundException)) {
+                console.error(err)
+               alert(err)
+              }
+            })
                    }}
       
       >
