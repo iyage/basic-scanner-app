@@ -38,10 +38,11 @@ const [scannerState,setScannerState] = useState(false)
         onClick={()=>{
     setScannerState(true);
        codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
-        alert(result)
+      
               if (result) {
                 console.log(result)
                  alert(result)
+                 console.log('called')
               }
               // eslint-disable-next-line no-undef
               if (err && !(err instanceof ZXing.NotFoundException)) {
