@@ -32,7 +32,7 @@ else selectedDeviceId = videoInputDevices[0].deviceId;
 
   codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
       if (result) {
-        console.log(result)
+      alert(result)
           alert(result)
           console.log('called')
       }
