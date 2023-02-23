@@ -41,8 +41,8 @@ else selectedDeviceId = videoInputDevices[0].deviceId;
         console.error(err)
         alert(err)
       }
-      if(err) console.log(err);
     })
+    alert("stream  "+selectedDeviceId)
 
   }).catch(error=>alert(error))
 
