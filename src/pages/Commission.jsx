@@ -1,5 +1,5 @@
 import { IconButton } from '@material-ui/core'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components';
 import { FaCamera } from 'react-icons/fa';
  
@@ -12,20 +12,43 @@ const ScannerContainer = styled.div`
 const Container = styled.div`
   width: 98%;
 `
+
 function Commission() {
 
+    
+
+  async function runScan ()
+  {
     let selectedDeviceId = null;
 // eslint-disable-next-line no-undef
  const codeReader = new ZXing.BrowserBarcodeReader();
-
   codeReader.getVideoInputDevices().then((videoInputDevices)=>{
     console.log(videoInputDevices)
 if (videoInputDevices.length > 1){ 
   selectedDeviceId = videoInputDevices[1].deviceId
-  alert(selectedDeviceId)
 }
 else selectedDeviceId = videoInputDevices[0].deviceId;
+
+
+  codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+      if (result) {
+        console.log(result)
+          alert(result)
+          console.log('called')
+      }
+      // eslint-disable-next-line no-undef
+      if (err && !(err instanceof ZXing.NotFoundException)) {
+        console.error(err)
+        alert(err)
+      }
+      if(err) console.log(err);
+      console.log("called")
+    })
+
   })
+
+  
+  }
 
 
   
@@ -37,21 +60,8 @@ const [scannerState,setScannerState] = useState(false)
       <IconButton
         onClick={()=>{
     setScannerState(true);
-       codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
-      
-              if (result) {
-                console.log(result)
-                 alert(result)
-                 console.log('called')
-              }
-              // eslint-disable-next-line no-undef
-              if (err && !(err instanceof ZXing.NotFoundException)) {
-                console.error(err)
-               alert(err)
-              }
-              if(err) console.log(err);
-              console.log("called")
-            })
+     runScan ()
+
                    }}
       
       >
