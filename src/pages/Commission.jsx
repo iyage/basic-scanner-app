@@ -89,7 +89,6 @@ html5QrcodeScanner.render(onScanSuccess, onScanFailure);
     //     Last Scan:
     //     {selected}
     //   </h2>
-
     //   <button
     //     onClick={() => {
     //       setStartScan(!startScan);
