@@ -31,9 +31,9 @@ function Commission() {
             if (decodedText !== lastResult) {
                 ++countResults;
                 lastResult = decodedText;
+                 alert(decodedText)
                 // eslint-disable-next-line no-undef
                 beep.play()
-                alert(decodedText)
                 html5QrCode.stop();
             }
         };
