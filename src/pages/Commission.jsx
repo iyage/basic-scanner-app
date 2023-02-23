@@ -3,7 +3,8 @@ import { IconButton } from '@material-ui/core'
 import {Html5Qrcode} from "html5-qrcode"
 import styled from 'styled-components';
 import { FaCamera } from 'react-icons/fa';
-import "../apis/beep.js"
+import useSound from 'use-sound';
+import beep from "../beep.wav"
 
 const ScannerContainer = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ const Container = styled.div`
   width: 98%;
 `
 function Commission() {
+const [play] = useSound(beep);
 
   return (
     <Container>
@@ -31,9 +33,9 @@ function Commission() {
             if (decodedText !== lastResult) {
                 ++countResults;
                 lastResult = decodedText;
+                play();
                  alert(decodedText)
-                // eslint-disable-next-line no-undef
-                beep.play()
+              
                 html5QrCode.stop();
             }
         };
