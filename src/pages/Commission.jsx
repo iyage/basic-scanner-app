@@ -1,9 +1,9 @@
 // import { IconButton } from '@material-ui/core'
-import React, {  useState } from 'react'
+import React, {  useEffect} from 'react'
+import {Html5QrcodeScanner} from "html5-qrcode"
 // import styled from 'styled-components';
 // import { FaCamera } from 'react-icons/fa';
- import QrReader from "react-qr-reader";
- import "./style.css";
+
 // const ScannerContainer = styled.div`
 //   display: flex;
 //   justify-content: center;
@@ -14,26 +14,32 @@ import React, {  useState } from 'react'
 //   width: 98%;
 // `
 
-function Commission() {
-  const [selected, setSelected] = useState("environment");
-  const [startScan, setStartScan] = useState(false);
-  const [loadingScan, setLoadingScan] = useState(false);
-  const [data, setData] = useState("");
 
-  const handleScan = async (scanData) => {
-    setLoadingScan(true);
-    console.log(`loaded data data`, scanData);
-    if (scanData && scanData !== "") {
-      console.log(`loaded >>>`, scanData);
-      setData(scanData);
-      setStartScan(false);
-      setLoadingScan(false);
-      // setPrecScan(scanData);
-    }
-  };
-  const handleError = (err) => {
-    console.error(err);
-  };
+
+
+
+
+function Commission() {
+
+  useEffect(()=>{
+    function onScanSuccess(decodedText, decodedResult) {
+  // handle the scanned code as you like, for example:
+  alert(`Code matched = ${decodedText}`, decodedResult);
+}
+
+function onScanFailure(error) {
+  // handle scan failure, usually better to ignore and keep scanning.
+  // for example:
+  console.warn(`Code scan error = ${error}`);
+}
+
+let html5QrcodeScanner = new Html5QrcodeScanner(
+  "reader",
+  { fps: 10, qrbox: {width: 250, height: 250} },
+  /* verbose= */ false);
+html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+  },[])
 
 
 //   async function runScan ()
@@ -74,40 +80,42 @@ function Commission() {
 // const video = useRef();
 // const [scannerState,setScannerState] = useState(false)
   return (
+    <div id='reader' width="400px" style={{color:'red'}}></div>
+  )}
 
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>
-        Last Scan:
-        {selected}
-      </h2>
+    // <div className="App">
+    //   <h1>Hello CodeSandbox</h1>
+    //   <h2>
+    //     Last Scan:
+    //     {selected}
+    //   </h2>
 
-      <button
-        onClick={() => {
-          setStartScan(!startScan);
-        }}
-      >
-        {startScan ? "Stop Scan" : "Start Scan"}
-      </button>
-      {startScan && (
-        <>
-          <select onChange={(e) => setSelected(e.target.value)}>
-            <option value={"environment"}>Back Camera</option>
-            <option value={"user"}>Front Camera</option>
-          </select>
-          <QrReader
-            facingMode={selected}
-            delay={1000}
-            onError={handleError}
-            onScan={handleScan}
-            // chooseDeviceId={()=>selected}
-            style={{ width: "300px" }}
-          />
-        </>
-      )}
-      {loadingScan && <p>Loading</p>}
-      {data !== "" && <p>{data}</p>}
-    </div>
+    //   <button
+    //     onClick={() => {
+    //       setStartScan(!startScan);
+    //     }}
+    //   >
+    //     {startScan ? "Stop Scan" : "Start Scan"}
+    //   </button>
+    //   {startScan && (
+    //     <>
+    //       <select onChange={(e) => setSelected(e.target.value)}>
+    //         <option value={"environment"}>Back Camera</option>
+    //         <option value={"user"}>Front Camera</option>
+    //       </select>
+    //       <QrReader
+    //         facingMode={selected}
+    //         delay={1000}
+    //         onError={handleError}
+    //         onScan={handleScan}
+    //         // chooseDeviceId={()=>selected}
+    //         style={{ width: "300px" }}
+    //       />
+    //     </>
+    //   )}
+    //   {loadingScan && <p>Loading</p>}
+    //   {data !== "" && <p>{data}</p>}
+    // </div>
 
 //     <Container>
 //      {!scannerState&& <ScannerContainer style={{height:'60vh'}}>
@@ -132,7 +140,7 @@ function Commission() {
 //     </Container>
 
 
-  )
-}
+  // )
+// }
 
 export default Commission
