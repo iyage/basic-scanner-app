@@ -31,6 +31,7 @@ else selectedDeviceId = videoInputDevices[0].deviceId;
 
 
   codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+alert(result)
       if (result) {
       alert(result)
           alert(result)
@@ -42,7 +43,7 @@ else selectedDeviceId = videoInputDevices[0].deviceId;
         alert(err)
       }
     })
-    alert("stream  "+selectedDeviceId)
+    // alert("stream  "+selectedDeviceId)
 
   }).catch(error=>alert(error))
 
