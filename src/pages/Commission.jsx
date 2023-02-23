@@ -3,6 +3,7 @@ import { IconButton } from '@material-ui/core'
 import {Html5Qrcode} from "html5-qrcode"
 import styled from 'styled-components';
 import { FaCamera } from 'react-icons/fa';
+import "../apis/beep.js"
 
 const ScannerContainer = styled.div`
   display: flex;
@@ -14,22 +15,10 @@ const Container = styled.div`
   width: 98%;
 `
 function Commission() {
-//   function onScanSuccess(decodedText, decodedResult) {
-//   // handle the scanned code as you like, for example:
-//   alert(`Code matched = ${decodedText}`, decodedResult);
-// }
-// function onScanFailure(error) {
-//   // handle scan failure, usually better to ignore and keep scanning.
-//   // for example:
-//   console.warn(`Code scan error = ${error}`);
-// }
-// const reader = useRef()
-
-// html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
   return (
     <Container>
-      <div id='reader'  width='90%'></div>
+      <div id='reader'  width='97%'></div>
       <ScannerContainer style={{height:'60vh'}}>
       <IconButton
         onClick={()=>{
@@ -42,14 +31,13 @@ function Commission() {
             if (decodedText !== lastResult) {
                 ++countResults;
                 lastResult = decodedText;
+                // eslint-disable-next-line no-undef
+                beep.play()
                 alert(decodedText)
-                // gtin = decodedText.trim();
-                // gtin = gtin.replace(/[^a-z0-9]/gi, '');
-                // fetchDetails(gtin);
                 html5QrCode.stop();
             }
         };
-        const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+        const config = { fps: 10, qrbox: { width: 270, height: 270 } };
         html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
   }}
       
