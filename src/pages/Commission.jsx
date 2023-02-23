@@ -1,6 +1,6 @@
 import { IconButton } from '@material-ui/core'
 import React, { useRef } from 'react'
-import {Html5Qrcode} from "html5-qrcode"
+import {Html5QrcodeScanner} from "html5-qrcode"
 import styled from 'styled-components';
 import { FaCamera } from 'react-icons/fa';
 
@@ -33,7 +33,7 @@ const reader = useRef()
       <ScannerContainer style={{height:'60vh'}}>
       <IconButton
         onClick={()=>{
-          let html5Qrcoder= new Html5Qrcode(
+          let html5Qrcoder= new Html5QrcodeScanner(
   "reader",
   { fps: 10, qrbox: {width: 250, height: 250} },
   /* verbose= */ false);
