@@ -50,7 +50,7 @@ const [scannerState,setScannerState] = useState(false)
                alert(err)
               }
               if(err) console.log(err);
-              alert("called")
+              console.log("called")
             })
                    }}
       
