@@ -46,6 +46,7 @@ const  [countResults,setCountResults]= useState(0);
           // eslint-disable-next-line no-const-assign
           setCountResults(++countResults);
           setLastResult(decodedText)
+          alert(lastResult)
             // lastResult = ;
             // gtin = decodedText.trim();
             // gtin = gtin.replace(/[^a-z0-9]/gi, '');
