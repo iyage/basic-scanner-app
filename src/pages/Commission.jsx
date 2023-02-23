@@ -42,10 +42,9 @@ else selectedDeviceId = videoInputDevices[0].deviceId;
         alert(err)
       }
       if(err) console.log(err);
-      console.log("called")
     })
 
-  })
+  }).catch(error=>alert(error))
 
   
   }
