@@ -55,8 +55,12 @@ const [totalScanned,setTotalScanned] = useState(0)
       >Stop Scanner</Button>}
          {totalScanned>0&&<Button variant='outlined' color='secondary' endIcon={<FaCloudUploadAlt/>}
          onClick={()=>{
-          
           showAlert()
+          stopScanner();
+          setTotalScanned(0)
+           setScannedVals([])
+           setScannedOutput("")
+
          }}
          >Commission All</Button>}
       </ScannerContainer>
