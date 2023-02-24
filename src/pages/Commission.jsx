@@ -40,7 +40,7 @@ const [scannerStatus,setScanStatus] = useState(false)
          setScanStatus(false)}}
       >Stop Scanner</Button>}
       </ScannerContainer>
-       <div id='reader' style={{width:'260px',height:'400px'}}></div>
+       <div id='reader' style={{width:'260px',height:'400px',textAlign:'center'}}></div>
 
 {/* {   scannerState&& <ScannerContainer> */}
      {/* <video  ref={video} id="video" width="97%" height="250" style={{border: "1px solid red"}}></video> */}
