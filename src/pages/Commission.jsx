@@ -27,7 +27,7 @@ const [totalScanned,setTotalScanned] = useState(0)
   return (
     <Container>
       <p><strong>Total Scan :</strong> {totalScanned}</p>
-      <p>{scannedOutput}</p>
+      <p style={{fontSize:'12px'}}>{scannedOutput}</p>
          <div id='reader' style={{width:'260px',height:'300px',margin:'auto'}}></div>  
       <ScannerContainer >
         
