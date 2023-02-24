@@ -25,7 +25,7 @@ const [scannerStatus,setScanStatus] = useState(false)
   return (
     <Container>
       <p>{scannedOutput}</p>
-         
+         <div id='reader' style={{width:'260px',height:'280px',margin:'auto'}}></div>  
       <ScannerContainer >
         
         {!scannerStatus&&<Button endIcon={<FaCamera/>} variant='contained' color='secondary'
@@ -40,7 +40,7 @@ const [scannerStatus,setScanStatus] = useState(false)
          setScanStatus(false)}}
       >Stop Scanner</Button>}
       </ScannerContainer>
-       <div id='reader' style={{width:'260px',height:'400px',margin:'auto'}}></div>
+     
 
 {/* {   scannerState&& <ScannerContainer> */}
      {/* <video  ref={video} id="video" width="97%" height="250" style={{border: "1px solid red"}}></video> */}
