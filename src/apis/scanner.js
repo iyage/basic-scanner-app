@@ -18,7 +18,7 @@ export function scanner(play,output)
                 
             }
         };
-        const config = { fps: 10, qrbox: { width: 270, height: 270 } };
+        const config = { fps: 10, qrbox: { width: 230, height: 230 } };
         html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
 }
 
