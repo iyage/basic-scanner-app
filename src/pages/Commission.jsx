@@ -43,11 +43,11 @@ const [totalScanned,setTotalScanned] = useState(0)
       onClick={()=>{stopScanner();
          setScanStatus(false)}}
       >Stop Scanner</Button>}
-         <Button variant='outlined' color='secondary' endIcon={<FaCloudUploadAlt/>}
+         {totalScanned>0&&<Button variant='outlined' color='secondary' endIcon={<FaCloudUploadAlt/>}
          onClick={()=>{
           alert(JSON.stringify(scannedVals))
          }}
-         >Commission All</Button>
+         >Commission All</Button>}
       </ScannerContainer>
      
 
