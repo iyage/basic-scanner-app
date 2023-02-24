@@ -7,6 +7,7 @@ import useSound from 'use-sound';
 import beep from "../beep.wav"
 import { scanner, stopScanner } from '../apis/scanner';
 import { useState } from 'react';
+import Swal from "sweetalert2";
 
 const ScannerContainer = styled.div`
   display: flex;
@@ -25,6 +26,14 @@ const [scannedOutput,setScannedOutput] = useState("");
 const [scannerStatus,setScanStatus] = useState(false)
 const [scannedVals,setScannedVals]= useState([]);
 const [totalScanned,setTotalScanned] = useState(0)
+   const showAlert = () => {
+        Swal.fire({
+            title: "Success",
+            text: "Alert successful",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+    }
   return (
     <Container>
       <p><strong>Total Scan :</strong> {totalScanned}</p>
@@ -43,9 +52,10 @@ const [totalScanned,setTotalScanned] = useState(0)
       onClick={()=>{stopScanner();
          setScanStatus(false)}}
       >Stop Scanner</Button>}
-         {totalScanned>0&&<Button variant='outlined' color='secondary' endIcon={<FaCloudUploadAlt/>}
+         {<Button variant='outlined' color='secondary' endIcon={<FaCloudUploadAlt/>}
          onClick={()=>{
           alert(JSON.stringify(scannedVals))
+          showAlert()
          }}
          >Commission All</Button>}
       </ScannerContainer>
