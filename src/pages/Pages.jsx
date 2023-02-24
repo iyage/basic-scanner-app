@@ -40,7 +40,7 @@ const Circle2= styled.div`
        `
  const Header = styled.div`
 margin-top: 50px;
-margin-bottom: 30px;
+margin-bottom: 5px;
        `
        const ImgContainer = styled.div`
   display: flex;
