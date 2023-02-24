@@ -22,15 +22,18 @@ function Commission() {
 const [play] = useSound(beep);
 const [scannedOutput,setScannedOutput] = useState("");
 const [scannerStatus,setScanStatus] = useState(false)
+const [scannedVals,setScannedVals]= useState([]);
+const [totalScanned,setTotalScanned] = useState(0)
   return (
     <Container>
+      <p><strong>Total Scan :</strong> {totalScanned}</p>
       <p>{scannedOutput}</p>
-         <div id='reader' style={{width:'260px',height:'280px',margin:'auto'}}></div>  
+         <div id='reader' style={{width:'260px',height:'300px',margin:'auto'}}></div>  
       <ScannerContainer >
         
         {!scannerStatus&&<Button endIcon={<FaCamera/>} variant='contained' color='secondary'
                 onClick={()=>{
-          scanner(play,setScannedOutput);
+          scanner(play,setScannedOutput,scannedVals,setScannedVals,setTotalScanned);
           setScanStatus(true)
   }}
         >Start Scanner</Button>}

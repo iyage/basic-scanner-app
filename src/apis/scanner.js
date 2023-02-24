@@ -1,10 +1,12 @@
 import {Html5Qrcode} from "html5-qrcode"
 
-let html5QrCode =  null;
-export function scanner(play,output)
+let html5QrCode =  null; 
+export function scanner(play,output,scannedVals,setScannedVals,setTotalScanned)
 {
      html5QrCode = new Html5Qrcode("reader");
-// eslint-disable-next-line no-unused-vars
+
+       let uniqueSgtins =  new Set(scannedVals)
+       // eslint-disable-next-line no-unused-vars
           let  lastResult,countResults=0;
             const qrCodeSuccessCallback = (decodedText, decodedResult) => {
             /* handle success */
@@ -12,8 +14,10 @@ export function scanner(play,output)
                 ++countResults;
                 lastResult = decodedText;
                 play();
-                 alert(decodedText)
                  output(decodedText)
+                  uniqueSgtins.add(decodedText)
+                  setTotalScanned(uniqueSgtins.size)
+                  setScannedVals(Array.from(uniqueSgtins))
               
                 
             }
