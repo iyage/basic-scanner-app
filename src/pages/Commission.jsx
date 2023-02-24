@@ -32,6 +32,7 @@ const [totalScanned,setTotalScanned] = useState(0)
             text: "Alert successful",
             icon: "success",
             confirmButtonText: "OK",
+            confirmButtonColor:'red'
           });
     }
   return (
@@ -52,9 +53,9 @@ const [totalScanned,setTotalScanned] = useState(0)
       onClick={()=>{stopScanner();
          setScanStatus(false)}}
       >Stop Scanner</Button>}
-         {<Button variant='outlined' color='secondary' endIcon={<FaCloudUploadAlt/>}
+         {totalScanned>0&&<Button variant='outlined' color='secondary' endIcon={<FaCloudUploadAlt/>}
          onClick={()=>{
-          alert(JSON.stringify(scannedVals))
+          
           showAlert()
          }}
          >Commission All</Button>}

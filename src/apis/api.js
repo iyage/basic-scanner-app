@@ -212,3 +212,11 @@ export const  addNewLot  = async (data)=>{
     }
     }) 
 }
+
+export const commisionSpc = async (data)=>{
+    return await gs1_api.post('/traceability/commissionepc',data,{
+                   headers:{
+                    'Authorization':  `Bearer ${process.env.REACT_APP_PARTNER_KEY}`  
+    }
+    })
+}
