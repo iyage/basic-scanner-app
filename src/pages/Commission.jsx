@@ -2,18 +2,19 @@ import { Button } from '@material-ui/core'
 // import React, { useRef } from 'react'
 
 import styled from 'styled-components';
-import { FaCamera } from 'react-icons/fa';
+import { FaCamera, FaCloudUploadAlt, FaStopCircle } from 'react-icons/fa';
 import useSound from 'use-sound';
 import beep from "../beep.wav"
 import { scanner, stopScanner } from '../apis/scanner';
 import { useState } from 'react';
-import PanToolIcon from '@material-ui/icons/PanTool';
 
 const ScannerContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 7px 1px;
+  flex-direction: column;
+  row-gap: 20px;
 `
 const Container = styled.div`
   width: 98%;
@@ -38,10 +39,15 @@ const [totalScanned,setTotalScanned] = useState(0)
   }}
         >Start Scanner</Button>}
             {scannerStatus&&<Button variant='contained' color='secondary'
-            endIcon={<PanToolIcon/>}
+            endIcon={<FaStopCircle/>}
       onClick={()=>{stopScanner();
          setScanStatus(false)}}
       >Stop Scanner</Button>}
+         <Button variant='outlined' color='secondary' endIcon={<FaCloudUploadAlt/>}
+         onClick={()=>{
+          alert(JSON.stringify(scannedVals))
+         }}
+         >Commission All</Button>
       </ScannerContainer>
      
 
