@@ -25,7 +25,7 @@ const [scannerStatus,setScanStatus] = useState(false)
   return (
     <Container>
       <p>{scannedOutput}</p>
-          <div id='reader'  width='97%'></div>
+          <div id='reader'  width='70%'></div>
       <ScannerContainer >
         
         {!scannerStatus&&<Button endIcon={<FaCamera/>} variant='contained' color='secondary'
