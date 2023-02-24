@@ -7,12 +7,13 @@ import useSound from 'use-sound';
 import beep from "../beep.wav"
 import { scanner, stopScanner } from '../apis/scanner';
 import { useState } from 'react';
+import PanToolIcon from '@material-ui/icons/PanTool';
 
 const ScannerContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding: 10px;
 `
 const Container = styled.div`
   width: 98%;
@@ -20,24 +21,24 @@ const Container = styled.div`
 function Commission() {
 const [play] = useSound(beep);
 const [scannedOutput,setScannedOutput] = useState("");
+const [scannerStatus,setScanStatus] = useState(false)
   return (
     <Container>
       <p>{scannedOutput}</p>
-      <Button variant='contained' color='secondary'
-      onClick={stopScanner}
-      >Stop Scanner</Button>
-      <div id='reader'  width='97%'></div>
+          <div id='reader'  width='97%'></div>
       <ScannerContainer >
-      <IconButton
-        onClick={()=>{
-          
+        
+        {!scannerStatus&&<Button endIcon={<FaCamera/>} variant='contained' color='secondary'
+                onClick={()=>{
           scanner(play,setScannedOutput);
+          setScanStatus(true)
   }}
-      
-      >
-  <FaCamera size={60}
-  />
-</IconButton>
+        >Start Scanner</Button>}
+            {scannerStatus&&<Button variant='contained' color='secondary'
+            endIcon={<PanToolIcon/>}
+      onClick={()=>{stopScanner();
+         setScanStatus(false)}}
+      >Stop Scanner</Button>}
       </ScannerContainer>
 
 {/* {   scannerState&& <ScannerContainer> */}
