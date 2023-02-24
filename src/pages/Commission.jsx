@@ -1,10 +1,12 @@
-import { IconButton } from '@material-ui/core'
+import { Button, IconButton } from '@material-ui/core'
 // import React, { useRef } from 'react'
-import {Html5Qrcode} from "html5-qrcode"
+
 import styled from 'styled-components';
 import { FaCamera } from 'react-icons/fa';
 import useSound from 'use-sound';
 import beep from "../beep.wav"
+import { scanner, stopScanner } from '../apis/scanner';
+import { useState } from 'react';
 
 const ScannerContainer = styled.div`
   display: flex;
@@ -17,30 +19,19 @@ const Container = styled.div`
 `
 function Commission() {
 const [play] = useSound(beep);
-
+const [scannedOutput,setScannedOutput] = useState("");
   return (
     <Container>
+      <p>{scannedOutput}</p>
+      <Button variant='contained' color='secondary'
+      onClick={stopScanner}
+      >Stop Scanner</Button>
       <div id='reader'  width='97%'></div>
-      <ScannerContainer style={{height:'60vh'}}>
+      <ScannerContainer >
       <IconButton
         onClick={()=>{
           
-          // eslint-disable-next-line no-unused-vars
-          let  lastResult,countResults=0;
-            const html5QrCode = new Html5Qrcode("reader");
-            const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-            /* handle success */
-            if (decodedText !== lastResult) {
-                ++countResults;
-                lastResult = decodedText;
-                play();
-                 alert(decodedText)
-              
-                html5QrCode.stop();
-            }
-        };
-        const config = { fps: 10, qrbox: { width: 270, height: 270 } };
-        html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+          scanner(play,setScannedOutput);
   }}
       
       >
