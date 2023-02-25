@@ -15,12 +15,12 @@ function Pages() {
     overflow: hidden;
 `
 const Circle2= styled.div`
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     border-radius: 50%;
     position: absolute;
     background-color: rgb(221, 128, 127);
-    bottom: -100px;
+    bottom: -80px;
     right: -100px;
     z-index: -1;
       @media screen and (min-height:'70vh') {
@@ -28,13 +28,13 @@ const Circle2= styled.div`
        }
        `
        const Circle3= styled.div`
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     border-radius: 50%;
     position: absolute;
     background-color: rgb(143, 143, 143);
-    top: -150px;
-    left: -100px;
+    bottom: -150px;
+    right: -10px;
     z-index: -1;
       @media screen and (min-height:'70vh') {
            display: none;
@@ -51,16 +51,16 @@ margin-bottom: 5px;
 const Img = styled.img`
   width: 120px;
 `
-    const CopyRight = styled.p`
-        font-size: 14px;
-        letter-spacing: 1px;
-        position: absolute;
-        bottom: 70px;
-        font-weight: 200;
-        display: flex;
-        width: 100%;
-        justify-content: center;
-    `
+    // const CopyRight = styled.p`
+    //     font-size: 14px;
+    //     letter-spacing: 1px;
+    //     position: absolute;
+    //     bottom: 70px;
+    //     font-weight: 200;
+    //     display: flex;
+    //     width: 100%;
+    //     justify-content: center;
+    // `
 // const auth = localStorage.getItem('auth')
   return  (
     <PagesContainer>
@@ -76,9 +76,13 @@ component={Link} to="/"
 </IconButton>
 
     <Outlet/>
+      <Circle2/> 
+      <Circle3/>
        {/* <CopyRight> Copyright &copy; {new Date().getFullYear()} Sproxil. All rights reserved.</CopyRight>
-   <Circle3/>
-      <Circle2/> */}
+ 
+    */}
+      {/* 
+     */}
     </PagesContainer>
   )
 }
