@@ -9,6 +9,7 @@ import { scanner, stopScanner } from '../apis/scanner';
 import { useState } from 'react';
 import Swal from "sweetalert2";
 
+
 const ScannerContainer = styled.div`
   display: flex;
   justify-content: center;

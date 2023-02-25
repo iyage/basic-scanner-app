@@ -1,7 +1,9 @@
 import React from 'react'
-import {  Outlet } from 'react-router-dom'
+import {  Link, Outlet } from 'react-router-dom'
 import logo from '../images/SproxilR_Transparent.png'
 import styled from 'styled-components'
+import { FaHome } from 'react-icons/fa'
+import { IconButton } from '@material-ui/core'
 
 function Pages() {
     const PagesContainer = styled.div`
@@ -39,7 +41,7 @@ const Circle2= styled.div`
        }
        `
  const Header = styled.div`
-margin-top: 50px;
+margin-top: 30px;
 margin-bottom: 5px;
        `
        const ImgContainer = styled.div`
@@ -67,10 +69,16 @@ const Img = styled.img`
  <Img src={logo}/>
 </ImgContainer>
 </Header>
+<IconButton
+component={Link} to="/" 
+>
+<FaHome  />
+</IconButton>
+
     <Outlet/>
-       <CopyRight> Copyright &copy; {new Date().getFullYear()} Sproxil. All rights reserved.</CopyRight>
+       {/* <CopyRight> Copyright &copy; {new Date().getFullYear()} Sproxil. All rights reserved.</CopyRight>
    <Circle3/>
-      <Circle2/>
+      <Circle2/> */}
     </PagesContainer>
   )
 }
