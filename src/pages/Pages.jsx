@@ -7,7 +7,7 @@ import { IconButton } from '@material-ui/core'
 
 function Pages() {
     const PagesContainer = styled.div`
-    height: 90vh;
+    height: 93vh;
     width: 100vw;
     position: relative;
     color: white;
