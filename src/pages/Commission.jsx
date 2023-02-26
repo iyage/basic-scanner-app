@@ -8,6 +8,7 @@ import beep from "../beep.wav"
 import { scanner, stopScanner } from '../apis/scanner';
 import { useState } from 'react';
 import Swal from "sweetalert2";
+import { useNavigate } from 'react-router-dom';
 
 
 const ScannerContainer = styled.div`
@@ -27,6 +28,7 @@ const [scannedOutput,setScannedOutput] = useState("");
 const [scannerStatus,setScanStatus] = useState(false)
 const [scannedVals,setScannedVals]= useState([]);
 const [totalScanned,setTotalScanned] = useState(0)
+const navigate = useNavigate();
    const showAlert = () => {
         Swal.fire({
             title: "Success",
@@ -35,11 +37,8 @@ const [totalScanned,setTotalScanned] = useState(0)
             confirmButtonText: "OK",
             confirmButtonColor:'red'
           }).then((response)=>{
-                if(response.isConfirmed){stopScanner()
-                        stopScanner();
-                      setTotalScanned(0)
-                      setScannedVals([])
-                      setScannedOutput("")
+                if(response.isConfirmed){
+     navigate("/")
                 }
           });
     }
