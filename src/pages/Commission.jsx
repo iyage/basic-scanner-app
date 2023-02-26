@@ -34,8 +34,13 @@ const [totalScanned,setTotalScanned] = useState(0)
             icon: "success",
             confirmButtonText: "OK",
             confirmButtonColor:'red'
-          }).then(()=>{
-            stopScanner();
+          }).then((response)=>{
+                if(response.isConfirmed){stopScanner()
+                        stopScanner();
+                      setTotalScanned(0)
+                      setScannedVals([])
+                      setScannedOutput("")
+                }
           });
     }
   return (
