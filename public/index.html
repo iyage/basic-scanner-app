@@ -45,5 +45,16 @@
       <!-- <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
         <script src="/src/apis/html5-qrcode.min.js"></script> -->
           <!-- <script type="text/javascript" src="https://unpkg.com/@zxing/library@0.15.0"></script> -->
+          <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", function () {
+                  navigator.serviceWorker
+                    .register("sw.js")
+                    .then(res => console.log("service worker registered"))
+                    .catch(err => console.log("service worker not registered", err))
+                })
+              }
+          </script>
   </body>
+
 </html>
